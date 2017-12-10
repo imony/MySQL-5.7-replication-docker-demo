@@ -47,53 +47,16 @@ mysqldの設定ファイル (mysql.cnf)
   ```
   設定項目について説明します。
 
-<table>
-  <tr>
-    <th>項目名</th>
-    <th>設定値</th>
-    <th>説明</th>
-  </tr>
-  <tr>
-    <td>Character-set-server</td>
-    <td>utf8 など</td>
-    <td>テキストカラムの文字コードを指定します</td>
-  </tr>
-  <tr>
-    <td>gtid_mode</td>
-    <td>ON/OFF</td>
-    <td>グローバルトランザクションIDの使用・不使用を指定します</td>
-  </tr>
-  <tr>
-    <td>enforce_gtid_consistency</td>
-    <td>WARN/ON</td>
-    <td>グローバルトランザクションID非互換のSQL文を使った場合の挙動を指定します。WARN:警告をだす/ON:エラーとする</td>
-  </tr>
-  <tr>
-    <td>server-id</td>
-    <td>int値</td>
-    <td>MySQLサーバデーモンの識別IDを指定します</td>
-  </tr>
-  <tr>
-    <td>log_bin</td>
-    <td>パス文字列</td>
-    <td>MySQLサーバデーモンで行われたcommitログをバイナリデータでログ格納先パスに保存します</td>
-  </tr>
-  <tr>
-    <td>log_slave_updates</td>
-    <td>なし</td>
-    <td>スレーブとしてマスターから受け取ったcommitの実行ログを保存することを指定します</td>
-  </tr>
-  <tr>
-    <td>master_info_repository</td>
-    <td>TABLE/FILE</td>
-    <td>commitログの格納先を指定する。TABLEに設定するとクラッシュセーフに役立ちます</td>
-  </tr>
-  <tr>
-    <td>relay_log_info_repository</td>
-    <td>TABLE/FILE</td>
-    <td>マスターから送られてきたログの格納先を指定する。同上</td>
-  </tr>
-</table>
+|項目名|設定値|説明|
+|--------|----------|--------------------------------------------------------------------------------------|
+|Character-set-server|utf8 など|テキストカラムの文字コードを指定します|
+|gtid_mode|ON/OFF|グローバルトランザクションIDの使用・不使用を指定します|
+|enforce_gtid_consistency|WARN/ON|グローバルトランザクションID非互換のSQL文を使った場合の挙動を指定します。WARN:警告をだす/ON:エラーとする|
+|server-id|int値|MySQLサーバデーモンの識別IDを指定します|
+|log_bin|パス文字列|MySQLサーバデーモンで行われたcommitログをバイナリデータでログ格納先パスに保存します|
+|log_slave_updates|なし|スレーブとしてマスターから受け取ったcommitの実行ログを保存することを指定します|
+|master_info_repository|TABLE/FILE|commitログの格納先を指定する。TABLEに設定するとクラッシュセーフに役立ちます|
+|relay_log_info_repository|TABLE/FILE|マスターから送られてきたログの格納先を指定する。同上|
 
 
 
