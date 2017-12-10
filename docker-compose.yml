@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mysqld:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - ./mysqld.cnf:/etc/mysql/conf.d/mysqld.cnf
+      - ./prepare_mysqld.sql:/docker-entrypoint-initdb.d/prepare_mysqld.sql
+      - ./connector_mysqld.sh:/tmp/connector_mysqld.sh
+  mysqld2:
+    image: mysql:latest
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - ./mysqld2.cnf:/etc/mysql/conf.d/mysqld2.cnf
+      - ./prepare_mysqld2.sql:/docker-entrypoint-initdb.d/prepare_mysqld2.sql
+  mysqld3:
+    image: mysql:latest
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - ./mysqld3.cnf:/etc/mysql/conf.d/mysqld3.cnf
+      - ./prepare_mysqld3.sql:/docker-entrypoint-initdb.d/prepare_mysqld3.sql
+

@@ -1,0 +1,10 @@
+[mysqld]
+character-set-server=utf8
+gtid_mode=ON
+enforce_gtid_consistency
+server-id=10 
+log_bin=/var/log/mysql/mysql-bin.log
+log_slave_updates
+master_info_repository=TABLE
+relay_log_info_repository=TABLE
+
