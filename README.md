@@ -48,7 +48,7 @@ mysqldの設定ファイル (mysql.cnf)
   設定項目について説明します。
 
   |項目名|設定値|説明|
-  ——|——|——
+  |——-|——-|——-|
   |Character-set-server|utf8 など|テキストカラムの文字コードを指定します|
   |gtid_mode|ON/OFF|グローバルトランザクションIDの使用・不使用を指定します|
   |enforce_gtid_consistency|WARN/ON|グローバルトランザクションID非互換のSQL文を使った場合の挙動を指定します。WARN:警告をだす/ON:エラーとする|
@@ -70,14 +70,16 @@ mysqldの設定ファイル (mysql.cnf)
   * それぞれの担当テーブルが他のMySQLサーバデーモンにも共有されて、どのMySQLでも同じテーブルデータを持つ
 
 ## デモ動作要件
-  docker及びdocker-composeの動作する環境が必要になります。
-  以下のサイトを参考にして、インストールしてください。
-  https://docs.docker.com/engine/installation/
+docker及びdocker-composeの動作する環境が必要になります。
+以下のサイトを参考にして、インストールしてください。
+https://docs.docker.com/engine/installation/
 https://docs.docker.com/compose/install/
 
 ## 実行手順
-このページにdocker上でデモンストレーションするためのファイルをまとめたアーカイブファイルをアップロードしました。こちらをダウンロード・展開したうえでお試しください。
+デモンストレーションに必要なファイルをGitHubよりダウンロードできます。それをダウンロードした後、docker-composeで各MySQLコンテナを起動します。最後にmyqlreplicationdemo_mysqld_1コンテナに入り、MySQLスレーブ機能を立ち上げるコマンドスクリプトを実行します。以下に手順を示します。
 ```
+$ git clone https://github.com/imony/MySQL-5.7-replication-docker-demo.git
+$ cd MySQL-5.7-replication-docker-demo
 $ docker-compose up -d           # 3つのdockerコンテナを立ち上げます
 $ docker exec -it mysqlreplicationdemo_mysqld_1 bash     # コンテナの一つmysqlreplicationdemo_mysqld_1に入ります
 (Docker) # sh /tmp/connector_mysqld.sh     # 各コンテナのMySQLスレーブ機能を起動するコマンドを実行します
