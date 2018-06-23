@@ -1,7 +1,7 @@
 MySQLによるフルメッシュ型相互レプリケーション
 
 # このドキュメントが伝えること
-MySQLを使っていわゆる全マスターと呼ばれる相互レプリケーションを行うために必要な知識と、それを踏まえた上でレプリケーション動作を試せるデモンストレーション環境を後置する方法について書いています。  
+MySQLを使っていわゆる全マスターと呼ばれる相互レプリケーションを行うために必要な知識と、それを踏まえた上でレプリケーション動作を試せるデモンストレーション環境を後置する方法について書いています。
 このドキュメントを頭から読むのをお勧めします。ですが、とりあえずサンプルを動かしてみたい場合には、3.デモ構築の手順に沿って動かした上で他の項目を読むのもいいかもしれません。
 
 # ドキュメント構成
@@ -18,7 +18,7 @@ MySQLサーバデーモンは、他のMySQLサーバデーモンに対して主�
 
 ## MySQL 5.7からは複数のマスターを持つことができる（マルチマスター機能）
 MySQL 5.6までは、スレーブはそれぞれ１つのマスターしか持てませんでした。しかしMySQL 5.7からは、MySQLサーバデーモンは複数のマスターを持つことができるようになりました。マルチマスター機能と呼ばれています。これを実現するために新たに*チャネル*という概念がMySQLに導入されました。チャネルとはスレーブにおいてどのマスターとの通信かを識別するものです。スレーブはチャネルを用いることで、複数あるマスターを区別できます。
-これにより、各々のMySQLサーバデーモンが自分以外のMySQLサーバデーモン全てをマスターとすることで、フルメッシュ型全マスターの相互レプリケーションを実現できます。  
+これにより、各々のMySQLサーバデーモンが自分以外のMySQLサーバデーモン全てをマスターとすることで、フルメッシュ型全マスターの相互レプリケーションを実現できます。
 後述するデモ構築の章では、このフルメッシュ型全マスターの相互レプリケーションの構築について記述しています。
 
 ## GTID（グローバルトランザクションID）について
@@ -72,11 +72,12 @@ mysqldの設定ファイル (mysql.cnf)
 ## デモ動作要件
 docker及びdocker-composeの動作する環境が必要になります。
 以下のサイトを参考にして、インストールしてください。
-https://docs.docker.com/engine/installation/  
+https://docs.docker.com/engine/installation/
 https://docs.docker.com/compose/install/
 
 ## 実行手順
 デモンストレーションに必要なファイルをGitHubよりダウンロードできます。それをダウンロードした後、docker-composeで各MySQLコンテナを起動します。最後にmyqlreplicationdemo_mysqld_1コンテナに入り、MySQLスレーブ機能を立ち上げるコマンドスクリプトを実行します。以下に手順を示します。
+
 ```
 $ git clone https://github.com/imony/MySQL-5.7-replication-docker-demo.git
 $ cd MySQL-5.7-replication-docker-demo
@@ -88,7 +89,7 @@ $ docker exec -it mysqlreplicationdemo_mysqld_1 bash     # コンテナの一つ
 一応、
 * mysqlreplicationdemo_mysqld_1 はデータベースtestdbを担当
 * mysqlreplicationdemo_mysqld2_1 はデータベースtestdb2を担当
-* mysqlreplicationdemo_mysqld3_1 はデータベースtestdb3を担当  
+* mysqlreplicationdemo_mysqld3_1 はデータベースtestdb3を担当
 
 としていますが、どのコンテナのMySQLでどのテーブルを更新しても反映されます。
 
